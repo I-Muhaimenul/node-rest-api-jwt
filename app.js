@@ -55,4 +55,8 @@ app.use((err, req, res, next) => {
     })
 })
 
+app.use('/', (req, res) => {
+    res.send('MEN AppRunning from heroku!. Goto /orders or /prducts or /signup.')
+})
+
 module.exports = app
