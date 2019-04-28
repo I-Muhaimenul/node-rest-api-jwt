@@ -4,9 +4,10 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-const productRoutes = require('./api/routes/products')
-const orderRoutes = require('./api/routes/orders')
-const userRoutes = require('./api/routes/user')
+// const productRoutes = require('./api/routes/products')
+// const orderRoutes = require('./api/routes/orders')
+// const userRoutes = require('./api/routes/user')
+const routes = require('./api/routes')
 
 //mongoose connect with mongodb atlas. it can also be done local mongodb easily
 // mongoose.connect( 'mongodb+srv://muhaimenul:'+ process.env.MONGO_ATLAS_PW +'@node-rest-dsafx.mongodb.net/test?retryWrites=true',
@@ -41,14 +42,14 @@ app.use((req, res, next) => {
     next();
 })
 
-
+//Routes
 app.get('/', (req, res) => {
     res.send('MongoExpNode REST App Running from heroku! Goto /orders or /prducts or /signup.')
 })
 
-app.use('/products', productRoutes)
-app.use('/orders', orderRoutes)
-app.use('/user', userRoutes)
+app.use('/products', routes.productRoutes)
+app.use('/orders', routes.orderRoutes)
+app.use('/user', routes.userRoutes)
 
 app.use((req, res, next) => {
     const error = new Error('Not Found')
