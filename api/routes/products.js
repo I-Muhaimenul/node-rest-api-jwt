@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const mongoose = require('mongoose')
 const multer = require('multer')
 const checkAuth = require('../middleware/check-auth')
 
+// controller
 const ProductController = require('../controller/product')
 
-//details way to use multer to upload file
+// details way to use multer to upload file
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, './uploads/');
