@@ -5,7 +5,7 @@ const router = express.Router()
 //include middlewares
 const checkAuth = require('../middleware/check-auth')
 
-//include models
+//include models if necessary
 
 //include controllers here some routes methodes are called from controller for example. but should be called all methods
 const OrdersController = require('../controller/orders')

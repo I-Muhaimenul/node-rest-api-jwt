@@ -1,5 +1,4 @@
 //inclue packages
-const express = require('express')
 const mongoose = require('mongoose')
 
 //include models
@@ -7,7 +6,7 @@ const Order = require('../models/order')
 const Product = require('../models/product')
 
 module.exports = {
-    orders_get_all = (req, res, next) => {
+    orders_get_all : (req, res, next) => {
         Order.find()
         .populate('product', 'name') //it brings referenced detals data 
         .exec()
@@ -25,7 +24,7 @@ module.exports = {
         })
     },
 
-    create_order = (req, res, next) => {
+    create_order : (req, res, next) => {
         Product.findById(req.body.productId)
         .then(product => {
             if(!product){
@@ -65,7 +64,7 @@ module.exports = {
         })
     },
 
-    single_order = (req, res, next) => {
+    single_order : (req, res, next) => {
         const id = req.params.orderId
         Order.findById(id).exec()
         .then(doc => {
@@ -82,7 +81,7 @@ module.exports = {
         })
     },
 
-    update_order = (req, res, next) => {
+    update_order : (req, res, next) => {
         const id = req.params.orderId
         const updateOps = {}
         for(const ops of req.body){
@@ -99,7 +98,7 @@ module.exports = {
         })
     },
 
-    delete_order = (req, res, next) => {
+    delete_order : (req, res, next) => {
         const id = req.params.orderId
         Order.remove({ _id: id }).exec()
         .then(result => {
