@@ -10,8 +10,8 @@ const mongoose = require('mongoose')
 const routes = require('./api/routes')
 
 //mongoose connect with mongodb atlas. it can also be done local mongodb easily
-// mongoose.connect( 'mongodb+srv://muhaimenul:'+ process.env.MONGO_ATLAS_PW +'@node-rest-dsafx.mongodb.net/test?retryWrites=true',
-//     // 'mongodb://muhaimenul:'+ encodeURIComponent(process.env.MONGO_ATLAS_PW) +'@node-rest-shard-00-00-dsafx.mongodb.net:27017,node-rest-shard-00-01-dsafx.mongodb.net:27017,node-rest-shard-00-02-dsafx.mongodb.net:27017/test?ssl=true&replicaSet=node-rest-shard-0&authSource=admin&retryWrites=true',
+// mongoose.connect( 'mongodb+srv://username:'+ process.env.MONGO_ATLAS_PW +'@node-rest-dsafx.mongodb.net/test?retryWrites=true',
+//     // 'mongodb://username:'+ encodeURIComponent(process.env.MONGO_ATLAS_PW) +'@node-rest-shard-00-00-dsafx.mongodb.net:27017,node-rest-shard-00-01-dsafx.mongodb.net:27017,node-rest-shard-00-02-dsafx.mongodb.net:27017/test?ssl=true&replicaSet=node-rest-shard-0&authSource=admin&retryWrites=true',
 //     {
 //     //    useMongoClient: true
 //         useNewUrlParser: true
@@ -21,7 +21,7 @@ const routes = require('./api/routes')
 //     }
 // ).catch(err => {console.log(err)})
 // for connecting mlab
-const mongoUri = 'mongodb://muhaimenul:873965ove@ds119652.mlab.com:19652/practice'
+const mongoUri = '\'' + process.env.DB_ENGINE + '://' +  process.env.MLAB_USERNAME + ':' +  process.env.MLAB_PW + '@' +  process.env.MLAB_HOST + '/' +  process.env.DB_NAME + '\'';
 mongoose.Promise = global.Promise //for deprication warning
 mongoose.connect(mongoUri, { useNewUrlParser: true })
   .then(() =>  console.log('Mlab connection succesful'))
