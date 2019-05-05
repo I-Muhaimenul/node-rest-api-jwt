@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
     username: process.env.MLAB_USERNAME,

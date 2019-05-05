@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 // const orderRoutes = require('./api/routes/orders')
 // const userRoutes = require('./api/routes/user')
 const routes = require('./api/routes')
-
+const { username, password, host, dbname, dbengine } = require('./utils/config');
 //mongoose connect with mongodb atlas. it can also be done local mongodb easily
 // mongoose.connect( 'mongodb+srv://username:'+ process.env.MONGO_ATLAS_PW +'@node-rest-dsafx.mongodb.net/test?retryWrites=true',
 //     // 'mongodb://username:'+ encodeURIComponent(process.env.MONGO_ATLAS_PW) +'@node-rest-shard-00-00-dsafx.mongodb.net:27017,node-rest-shard-00-01-dsafx.mongodb.net:27017,node-rest-shard-00-02-dsafx.mongodb.net:27017/test?ssl=true&replicaSet=node-rest-shard-0&authSource=admin&retryWrites=true',
@@ -21,10 +21,11 @@ const routes = require('./api/routes')
 //     }
 // ).catch(err => {console.log(err)})
 // for connecting mlab
-const mongoUri = '\'' + process.env.DB_ENGINE + '://' +  process.env.MLAB_USERNAME + ':' +  process.env.MLAB_PW + '@' +  process.env.MLAB_HOST + '/' +  process.env.DB_NAME + '\'';
+const mongoUri = '\'' + dbengine + '://' +  username + ':' +  password + '@' +  host + '/' +  dbname + '\'';
+console.log(mongoUri);
 mongoose.Promise = global.Promise //for deprication warning
 mongoose.connect(mongoUri, { useNewUrlParser: true })
-  .then(() =>  console.log('Mlab connection succesful'))
+  .then(() =>  console.log('MLab connection succesful'))
   .catch((err) => console.error(err))
 
 app.use(morgan('dev'))
