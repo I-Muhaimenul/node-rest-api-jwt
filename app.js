@@ -21,8 +21,8 @@ const { username, password, host, dbname, dbengine } = require('./utils/config')
 //     }
 // ).catch(err => {console.log(err)})
 // for connecting mlab
-const mongoUri = '\'' + dbengine + '://' +  username + ':' +  password + '@' +  host + '/' +  dbname + '\'';
-console.log(mongoUri);
+const mongoUri =  dbengine + '://' +  username + ':' +  password + '@' +  host + '/' +  dbname;
+// console.log(mongoUri);
 mongoose.Promise = global.Promise //for deprication warning
 mongoose.connect(mongoUri, { useNewUrlParser: true })
   .then(() =>  console.log('MLab connection succesful'))
