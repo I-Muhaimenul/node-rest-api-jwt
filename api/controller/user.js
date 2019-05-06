@@ -17,6 +17,7 @@ module.exports = {
                 })
             }else{
                 bcrypt.hash(req.body.password, 10, (err, hash) => { //10 is a salt. hash can be done without salt
+                    
                     if(err) {
                         return res.status(500).json({
                             error: err

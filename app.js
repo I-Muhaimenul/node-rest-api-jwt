@@ -30,8 +30,13 @@ mongoose.connect(mongoUri, { useNewUrlParser: true })
 
 app.use(morgan('dev'))
 app.use('/uploads', express.static('uploads')) //making upload folder public
-app.use(bodyParser.urlencoded({extended: true}))
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
 app.use(bodyParser.json())
+// parse application/vnd.api+json as json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
+app.use(bodyParser.raw({ type: 'text/xml' }));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
