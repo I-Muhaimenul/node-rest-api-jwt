@@ -8,3 +8,5 @@ module.exports = {
     dbname: process.env.DB_NAME,
     dbengine: process.env.DB_ENGINE
 };
+
+// use heroku config:set for env
